@@ -4,60 +4,70 @@
 
 ## Skills
 
-| Skill | 描述 | 触发场景 |
-|-------|------|---------|
-| **[gh-project-analyzer](skills/gh-project-analyzer/)** | GitHub 开源项目深度分析 | 分析仓库、评估项目、调研技术方案 |
+| Skill | 描述 | 类型 | 触发场景 |
+|-------|------|------|---------|
+| [gh-project-analyzer](skills/gh-project-analyzer/) | GitHub 开源项目深度分析 | 工具型 | 分析仓库、评估项目、调研技术方案 |
+| [idea-refine](skills/idea-refine/) | 结构化想法打磨为可执行方案 | 对话型 | 头脑风暴、想法模糊需梳理 |
+| [spec-driven](skills/spec-driven/) | 规格驱动开发（Spec→Plan→Tasks→Implement） | 流程型 | 新功能开发、需求规划 |
+| [code-reviewer](skills/agents/code-reviewer/) | 资深代码审查角色（5维度评估） | Agent | Code Review、PR 审查 |
+
+## Agents
+
+| Agent | 角色描述 |
+|-------|---------|
+| [code-reviewer](skills/agents/code-reviewer/) | 资深 Staff Engineer，从正确性/可读性/架构/安全/性能五维度审查代码 |
 
 ---
 
-## gh-project-analyzer
-
-GitHub 开源项目分析技能，无需认证，分析任意公开仓库。
-
-### 分析维度（10 大维度，30+ 指标）
-
-1. **项目概览** — 名称、Stars、Forks、语言、License、创建/更新时间
-2. **技术栈** — 框架、依赖、构建工具、CI/CD
-3. **项目结构** — 目录树、架构模式
-4. **活跃度** — 提交频率、Issue/PR 趋势、Release 周期
-5. **社区** — 核心贡献者、贡献集中度、响应速度
-6. **代码质量** — 测试覆盖、文档质量、代码规范
-7. **安全维护** — Dependabot、安全更新
-8. **价值评估** — 成熟度/活跃度/质量评分（1-5★）
-9. **可借鉴点** — 架构设计、代码模式、可复用组件
-10. **总结建议** — 一句话评价、推荐程度
-
-### 使用方式
-
-**快速扫描**（基础信息）：
-```bash
-bash skills/gh-project-analyzer/scripts/quick-scan.sh <owner/repo>
-```
-
-**完整分析**（全量数据）：
-```bash
-bash skills/gh-project-analyzer/scripts/analyze.sh <owner/repo> [/tmp/output-dir]
-```
+## 快速开始
 
 ### 安装
 
 ```bash
-# 通过 ClawHub
-clawhub install gh-project-analyzer
-
-# 或手动克隆到 skills 目录
+# 克隆到 OpenClaw workspace
 git clone https://github.com/ycbing/agent-skills.git
-cp -r agent-skills/skills/gh-project-analyzer ~/.openclaw/workspace/skills/
+cp -r agent-skills/skills/* ~/.openclaw/workspace/skills/
 ```
 
----
+### 使用
 
-## 开发中
+| 场景 | 示例 |
+|------|------|
+| 分析项目 | "分析 vercel/next.js" |
+| 打磨想法 | "帮我梳理一下这个想法" |
+| 规格开发 | "先写个 spec" |
+| 代码审查 | "审查一下这段代码" |
 
-- 🚧 **content-publisher** — 多平台内容自动发布（飞书、微信公众号、掘金等）
-- 🚧 **project-health-monitor** — 项目健康度定时巡检
-- 🚧 **weekly-report** — 自动生成周报
+## Skill 类型
 
-## 贡献
+- **工具型** — 带脚本自动采集数据（gh-project-analyzer）
+- **对话型** — 引导式对话，发散收敛（idea-refine）
+- **流程型** — 门控流程，逐步推进（spec-driven）
+- **Agent** — 角色定义，注入审查视角（code-reviewer）
 
-欢迎提交 Issue 和 PR！Follow [Agent Skills 规范](https://agentskills.io)。
+## 目录结构
+
+```
+agent-skills/
+├── skills/                    # 技能库
+│   ├── gh-project-analyzer/   # GitHub 项目分析
+│   │   ├── SKILL.md
+│   │   ├── scripts/           # 分析脚本
+│   │   └── references/        # 报告模板
+│   ├── idea-refine/           # 想法打磨
+│   ├── spec-driven/           # 规格驱动开发
+│   └── agents/                # Agent 角色定义
+│       └── code-reviewer/     # 代码审查者
+```
+
+## 路线图
+
+- [ ] `context-engineering` — 上下文工程最佳实践
+- [ ] `project-health-monitor` — 项目健康度定时巡检
+- [ ] `weekly-report` — 自动周报生成
+- [ ] `debug-assistant` — 调试助手
+- [ ] `performance-auditor` — 性能审计角色
+
+## License
+
+MIT
