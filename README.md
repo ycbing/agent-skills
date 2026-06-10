@@ -16,8 +16,8 @@
 
 | Agent | 角色 | 触发示例 |
 |-------|------|---------|
-| [code-reviewer](skills/agents/code-reviewer/) | 资深代码审查（5维度评估） | "审查一下这段代码" |
-| [performance-auditor](skills/agents/performance-auditor/) | 性能审计工程师 | "性能分析一下" |
+| [code-reviewer](agents/code-reviewer/) | 资深代码审查（5维度评估） | "审查一下这段代码" |
+| [performance-auditor](agents/performance-auditor/) | 性能审计工程师 | "性能分析一下" |
 
 ---
 
@@ -35,24 +35,34 @@ context-engineering（贯穿始终，管理 Agent 上下文）
 # 安装到 OpenClaw
 git clone https://github.com/ycbing/agent-skills.git
 cp -r agent-skills/skills/* ~/.openclaw/workspace/skills/
+cp -r agent-skills/agents/* ~/.openclaw/workspace/skills/agents/
 ```
 
 ## 目录结构
 
 ```
 agent-skills/
-└── skills/
-    ├── gh-project-analyzer/    # 工具型：GitHub 项目分析
-    │   ├── scripts/             # 数据采集脚本
-    │   └── references/          # 报告模板
-    ├── idea-refine/             # 对话型：想法打磨
-    ├── spec-driven/             # 流程型：规格驱动开发
-    ├── context-engineering/     # 知识型：上下文管理
-    ├── debug-assistant/         # 辅助型：调试助手
-    └── agents/                  # Agent 角色定义
-        ├── code-reviewer/        # 代码审查者
-        └── performance-auditor/  # 性能审计员
+├── skills/                     # 技能库
+│   ├── gh-project-analyzer/    # 🔧 GitHub 项目分析
+│   │   ├── scripts/             #    数据采集脚本
+│   │   └── references/          #    报告模板
+│   ├── idea-refine/             # 💬 想法打磨
+│   ├── spec-driven/             # 📋 规格驱动开发
+│   ├── context-engineering/     # 📖 上下文管理
+│   └── debug-assistant/         # 🔍 调试助手
+├── agents/                      # Agent 角色定义
+│   ├── code-reviewer/           #    代码审查者
+│   └── performance-auditor/    #    性能审计员
+└── README.md
 ```
+
+## Skill 类型说明
+
+- **🔧 工具型** — 带脚本自动采集数据，输出结构化报告
+- **💬 对话型** — 引导式对话，发散收敛思维
+- **📋 流程型** — 门控流程，逐步推进，每步人工确认
+- **📖 知识型** — 最佳实践和方法论参考
+- **🔍 辅助型** — 问题诊断和排查工具
 
 ## License
 
